@@ -6,10 +6,32 @@
 // 6. give the user their winnings
 // 7. play again
 
-// step 1
+
 
 // call the package prompt-sync
 const prompt = require("prompt-sync") ();
+
+
+// global variables
+const ROWS = 3;
+const COLS = 3;
+
+const SYMBOLS_COUNT = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+}
+
+const SYMBOLS_VALUES = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
+
+// classes and functions
+// step 1
 
 // function deposit
 const deposit = () => {
@@ -49,11 +71,34 @@ const getNumberOfLines = () => {
 
 // step 3
 
-const collectBetAmount = () => {
+const getBet = (balance, lines) => {
+     //loop with condition true = forever looping
+     while (true) {
+        const bet = prompt("Enter the bet per line: ")
+    
+    // parseFloat => convert string to float number
+        const numberBet = parseFloat(bet);
+    
+        if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
+            console.log("Invalid bet, try again.");
+        } else {
+            return numberBet;
+        }
+        }
+}
+
+// step 4
+
+const spin = () => {
+    const symbols = [];
     
 }
 
-const depositAmount = deposit();
+
+
+// use let because the balance changes everytime user plays
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+const bet = getBet(balance, numberOfLines);
 
  
