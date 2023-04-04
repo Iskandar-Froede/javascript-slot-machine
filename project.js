@@ -91,14 +91,28 @@ const getBet = (balance, lines) => {
 
 const spin = () => {
     const symbols = [];
-    
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+        for (let i = 0; i < count; i++) {
+            symbols.push(symbol)
+        }
+
+    }
+    const reels = [[], [], []];
+    for (let i = 0; i < COLS; i++) {
+        for (let j = 0; j < ROWS; j++) {
+            
+        }
+    }
 }
 
-
+spin();
 
 // use let because the balance changes everytime user plays
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
+
+
+ 
 
  
